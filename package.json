@@ -1,0 +1,31 @@
+{
+  "name": "memories",
+  "version": "1.0.0",
+  "description": "just for memories",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barefootChild/memories.git"
+  },
+  "keywords": [
+    "gulp",
+    "javascript"
+  ],
+  "author": "barefootchild",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barefootChild/memories/issues"
+  },
+  "homepage": "https://github.com/barefootChild/memories#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-uglify": "^3.0.1",
+    "pump": "^3.0.0"
+  }
+}
