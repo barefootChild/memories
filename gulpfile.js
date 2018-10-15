@@ -7,7 +7,7 @@ const htmlmin = require('gulp-htmlmin')
 const pump = require('pump')
 
 //转译es6业务代码
-gulp.task('babel', function() {
+gulp.task('babel', ['del'], function() {
   gulp.src('src/main/**/*.js', { base: 'src' })
       .pipe(babel({
         presets: ['@babel/env']
@@ -19,7 +19,8 @@ gulp.task('del', function() {
   clean.sync(['./dist/*', './src/js/main/*'])
 })
 
-gulp.task('default', ['del', 'babel'], function() {
+//先babel 再执行default
+gulp.task('default', function() {
   gulp.src('src/**/*.html', { base: 'src' })
       .pipe(htmlmin({ collapseWhitespace: true }))
       .pipe(gulp.dest('dist'))
