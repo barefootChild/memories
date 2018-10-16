@@ -36,7 +36,7 @@ gulp.task('default', function() {
       .pipe(htmlmin({ collapseWhitespace: true }))
       .pipe(gulp.dest('dist'))
 
-  gulp.src('product/css/**/*.css', { base: 'src' })
+  gulp.src('product/css/**/*.css', { base: 'product' })
       .pipe(cleanCss({ compatibility: 'ie8' }))
       .pipe(gulp.dest('dist'))
 
@@ -44,7 +44,7 @@ gulp.task('default', function() {
       .pipe(gulp.dest('dist'))
 
   pump([
-    gulp.src('product/js/**/*.js', { base: 'src' }),
+    gulp.src('product/js/**/*.js', { base: 'product' }),
     uglify(),
     gulp.dest('dist')
   ])
