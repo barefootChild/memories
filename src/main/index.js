@@ -18,6 +18,11 @@ const config = {
       },
       "polygon": {
         "nb_sides": 5
+      },
+      "image": {
+        "src": "../assets/centerIcon.svg",
+        "width": 100,
+        "height": 100
       }
     },
     "opacity": {
@@ -104,6 +109,4 @@ const config = {
   "retina_detect": true
 }
 
-particlesJS.load('main', config, function() {
-  console.log('callback - particles.js config loaded');
-});
+particlesJS.load('main', config, function() {});

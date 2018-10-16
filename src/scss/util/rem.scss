@@ -1,0 +1,20 @@
+@media (min-device-width : 320px) and (max-device-width : 374px) {
+  html{font-size: 32px;}
+}
+
+@media (min-device-width : 375px) {
+  html{font-size: 37.5px;}
+}
+
+@media (min-device-width : 400px) {
+  html{font-size: 40px;}
+}
+
+@media (min-device-width : 425px) {
+  html{font-size: 42.5px;}
+}
+
+@function px2rem($px){
+  $rem : 37.5px;
+  @return ($px/$rem/2) + rem;
+}

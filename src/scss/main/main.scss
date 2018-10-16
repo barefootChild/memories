@@ -1,0 +1,25 @@
+@import '../util/rem.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+#main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  background: #191970;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.header {
+  position: absolute;
+  top: px2rem(10px);
+  left: 0;
+  width: 100vw;
+  height: px2rem(80px);
+  background: #178ce6;
+  border-radius: px2rem(4px);
+}

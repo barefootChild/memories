@@ -5,6 +5,17 @@ const uglify = require('gulp-uglify')
 const cleanCss = require('gulp-clean-css')
 const htmlmin = require('gulp-htmlmin')
 const pump = require('pump')
+const sass = require('gulp-sass')
+
+gulp.task('sass', function() {
+  gulp.src('./src/scss/main/*.scss')
+      .pipe(sass().on('error', sass.logError))
+      .pipe(gulp.dest('./product/css'))
+})
+
+gulp.task('sass:watch', function() {
+  gulp.watch('./sass/**/*.scss', ['sass'])
+})
 
 //转译es6业务代码
 gulp.task('babel', ['del'], function() {
@@ -12,11 +23,11 @@ gulp.task('babel', ['del'], function() {
       .pipe(babel({
         presets: ['@babel/env']
       }))
-      .pipe(gulp.dest('src/js'))
+      .pipe(gulp.dest('product/js'))
 })
 
 gulp.task('del', function() {
-  clean.sync(['./dist/*', './src/js/main/*'])
+  clean.sync(['./dist/*', './product/js/main/*'])
 })
 
 //先babel 再执行default
@@ -25,12 +36,15 @@ gulp.task('default', function() {
       .pipe(htmlmin({ collapseWhitespace: true }))
       .pipe(gulp.dest('dist'))
 
-  gulp.src('src/css/**/*.css', { base: 'src' })
+  gulp.src('product/css/**/*.css', { base: 'src' })
       .pipe(cleanCss({ compatibility: 'ie8' }))
       .pipe(gulp.dest('dist'))
 
+  gulp.src('src/assets/*', { base: 'src' })
+      .pipe(gulp.dest('dist'))
+
   pump([
-    gulp.src('src/js/**/*.js', { base: 'src' }),
+    gulp.src('product/js/**/*.js', { base: 'src' }),
     uglify(),
     gulp.dest('dist')
   ])
